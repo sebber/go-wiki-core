@@ -1,18 +1,18 @@
 package repository
 
 import(
-  "wiki/entity"
+  "github.com/sebber/go-wiki-core/entity"
 )
 
 type MemoryWikipageRepository struct {
   Pages map[string]*entity.Page
 }
 
-func (repository MemoryWikiPageRepository) LoadPage(title string) (*entity.Page, error) {
+func (repository MemoryWikipageRepository) LoadPage(title string) (*entity.Page, error) {
   return repository.Pages[title], nil
 }
 
-func (repository MemoryWikiPageRepository) SavePage(p *entity.Page) error {
+func (repository MemoryWikipageRepository) SavePage(p *entity.Page) error {
   repository.Pages[p.Title] = p
 
   return nil

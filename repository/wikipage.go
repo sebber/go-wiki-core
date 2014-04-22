@@ -1,7 +1,7 @@
 package repository
 
 import(
-  "wiki/entity"
+  "github.com/sebber/go-wiki-core/entity"
 )
 
 type WikipageRepository interface {
