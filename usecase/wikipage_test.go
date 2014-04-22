@@ -3,10 +3,10 @@ package usecase_test
 import (
   "github.com/sebber/go-wiki-core/entity"
   "github.com/sebber/go-wiki-core/repository"
-	"github.com/sebber/go-wiki-core/usecase"
+  "github.com/sebber/go-wiki-core/usecase"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+  . "github.com/onsi/ginkgo"
+  . "github.com/onsi/gomega"
 )
 
 var _ = Describe("Wikipage", func() {
