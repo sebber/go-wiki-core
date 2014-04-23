@@ -12,14 +12,14 @@ import (
 var _ = Describe("Wikipage", func() {
 
   It("Saving page with title 'A page' should get saved", func() {
-    Repo := repository.MemoryWikipageRepository{}
-    Repo.Pages = make(map[string]*entity.Page)
+    repo := repository.MemoryWikipageRepository{}
+    repo.Pages = make(map[string]*entity.Page)
 
-    SaveWikipageUseCase := usecase.SaveWikipage{Repo}
-    SaveWikipageUseCase.Execute("A page", []byte("body"))
+    SaveWiki := usecase.SaveWikipage{repo}
+    SaveWiki.Execute("A page", []byte("body"))
 
-    page, err := Repo.LoadPage("A page")
-
+    LoadWiki := usecase.LoadWikipage{repo}
+    page, err := LoadWiki.Execute("A page")
 
     Expect(err).To(BeNil())
     Expect(page.Title).To(Equal("A page"))

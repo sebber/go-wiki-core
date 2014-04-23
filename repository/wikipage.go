@@ -5,6 +5,6 @@ import(
 )
 
 type WikipageRepository interface {
-  SavePage(p *entity.Page) error
-  LoadPage(title string) (*entity.Page, error)
+  GetByTitle(title string) (*entity.Page, error)
+  Add(p *entity.Page) error
 }

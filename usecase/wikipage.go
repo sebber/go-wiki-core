@@ -9,25 +9,25 @@ type SaveWikipage struct {
   PageRepository repository.WikipageRepository
 }
 
-func NewSaveWikipage(repository repository.MemoryWikipageRepository) (SaveWikipage) {
+func NewSaveWikipage(repository repository.WikipageRepository) (SaveWikipage) {
   return SaveWikipage{PageRepository: repository}
 }
 
 func (u *SaveWikipage) Execute(title string, body []byte) error {
   p := &entity.Page{Title: title, Body: body}
-  return u.PageRepository.SavePage(p)
+  return u.PageRepository.Add(p)
 }
 
 type LoadWikipage struct {
   PageRepository repository.WikipageRepository
 }
 
-func NewLoadWikipage(repository repository.MemoryWikipageRepository) (LoadWikipage) {
+func NewLoadWikipage(repository repository.WikipageRepository) (LoadWikipage) {
   return LoadWikipage{PageRepository: repository}
 }
 
 func (u *LoadWikipage) Execute(title string) (*entity.Page, error) {
-  page, err := u.PageRepository.LoadPage(title)
+  page, err := u.PageRepository.GetByTitle(title)
 
   return page, err
 }
